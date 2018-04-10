@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.sgp.entite.Banque;
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.repository.CollaborateurRepository;
-import dev.sgp.repository.DepartementRepository;
 
 /**
  * @author Emmanuel
@@ -26,9 +25,6 @@ public class CollaborateurController {
 
 	@Autowired
 	private CollaborateurRepository collaborateurRepository;
-	
-	@Autowired
-	private DepartementRepository departementRepository;
 
 	@GetMapping
 	public List<Collaborateur> listerCollaborateurs() {
@@ -70,6 +66,21 @@ public class CollaborateurController {
 	public Banque getCollaborateurBanque(@PathVariable(value = "matricule") String matricule) {
 
 		return this.collaborateurRepository.findByMatricule(matricule).getBanque();
+
+	}
+	
+	@PutMapping("/{matricule}/banque")
+	public void updateCollaborateurBanque(
+			@PathVariable(value = "matricule") String matricule, 
+			@RequestBody Banque banque) {
+
+			Collaborateur collaborateurModifie = this.collaborateurRepository.findByMatricule(matricule);
+			
+			collaborateurModifie.getBanque().setNom(banque.getNom());
+			collaborateurModifie.getBanque().setIban(banque.getIban());
+			collaborateurModifie.getBanque().setBic(banque.getBic());
+			
+			collaborateurRepository.save(collaborateurModifie);
 
 	}
 
