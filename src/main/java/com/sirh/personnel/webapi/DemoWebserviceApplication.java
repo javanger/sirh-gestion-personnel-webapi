@@ -1,4 +1,4 @@
-package com.sirh.personnel.demowebservice;
+package com.sirh.personnel.webapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
