@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -46,14 +47,10 @@ public class Collaborateur {
 	@JoinColumn(name = "ID_DEPARTEMENT")
 	Departement departement;
 
-	@Column(name = "BANQUE")
-	String banque;
+	@Embedded
+	Banque banque;
 
-	@Column(name = "BIC")
-	String bic;
 
-	@Column(name = "IBAN")
-	String iban;
 
 	public Collaborateur() {
 
@@ -61,7 +58,7 @@ public class Collaborateur {
 	}
 
 	public Collaborateur(String matricule, String nom, String prenom, LocalDate dateDeNaissance, String adresse,
-			String intitulePoste, Departement departement) {
+			String intitulePoste, Departement departement, Banque banque) {
 
 		this.matricule = matricule;
 		this.nom = nom;
@@ -71,6 +68,7 @@ public class Collaborateur {
 		this.dateHeureCreation = LocalDateTime.now();
 		this.intitulePoste = intitulePoste;
 		this.departement = departement;
+		this.banque = banque;
 	}
 
 	/**
@@ -249,7 +247,7 @@ public class Collaborateur {
 	 * 
 	 * @return the banque
 	 */
-	public String getBanque() {
+	public Banque getBanque() {
 		return banque;
 	}
 
@@ -259,46 +257,9 @@ public class Collaborateur {
 	 * @param banque
 	 *            the banque to set
 	 */
-	public void setBanque(String banque) {
+	public void setBanque(Banque banque) {
 		this.banque = banque;
 	}
 
-	/**
-	 * Getter
-	 * 
-	 * @return the bic
-	 */
-	public String getBic() {
-		return bic;
-	}
-
-	/**
-	 * Setter
-	 * 
-	 * @param bic
-	 *            the bic to set
-	 */
-	public void setBic(String bic) {
-		this.bic = bic;
-	}
-
-	/**
-	 * Getter
-	 * 
-	 * @return the iban
-	 */
-	public String getIban() {
-		return iban;
-	}
-
-	/**
-	 * Setter
-	 * 
-	 * @param iban
-	 *            the iban to set
-	 */
-	public void setIban(String iban) {
-		this.iban = iban;
-	}
 
 }

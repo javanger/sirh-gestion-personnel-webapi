@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.sgpwebapi.entite.Banque;
 import dev.sgpwebapi.entite.Collaborateur;
 import dev.sgpwebapi.repository.CollaborateurRepository;
 
@@ -45,6 +46,21 @@ public class CollaborateurController {
 		mdCollaborateur.setAdresse(collaborateur.getAdresse());
 		mdCollaborateur.setNom(collaborateur.getNom());
 		mdCollaborateur.setPrenom(collaborateur.getPrenom());
+
+		collarepo.save(mdCollaborateur);
+
+	}
+
+	@GetMapping(value = "/{matricule}/banque")
+	Banque getCollaborateurBanqueByMatricule(@PathVariable("matricule") String matricule) {
+
+		return collarepo.findByMatricule(matricule).getBanque();
+	}
+
+	@PutMapping(value = "/{matricule}/banque")
+	public void updateBanqueCollaborateur(@PathVariable("matricule") String matricule, @RequestBody Banque banque) {
+		Collaborateur mdCollaborateur = collarepo.findByMatricule(matricule);
+		mdCollaborateur.setBanque(banque);
 
 		collarepo.save(mdCollaborateur);
 
