@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.sirhgestionpersonnelwebapi.entite.Collaborateur;
 import dev.sirhgestionpersonnelwebapi.repository.CollaborateurRepository;
+import dev.sirhgestionpersonnelwebapi.repository.DepartementRepository;
 
 @RestController
 @RequestMapping("/collaborateurs")
 public class CollaborateurController {
 	@Autowired
 	private CollaborateurRepository collaborateurRepo;
+	@Autowired
+	private DepartementRepository departementRepo;
+
 
 
 	@GetMapping
@@ -46,9 +50,15 @@ public class CollaborateurController {
 
 		// collaborateurRepo.findByMatricule(matricule);
 		// collab.setMatricule(matricule);
+		Collaborateur collaborateur = collaborateurRepo.findByMatricule(matricule);
+		// collaborateur.setDepartement(departementRepo.getOne(collab.getDepartement().getId()));
+		// collaborateur.setBanque(banqueRepo.getOne(collab.getBanque().getId()));
 
-
+		collab.setId(collaborateur.getId());
 		collaborateurRepo.save(collab);
+
+
+
 
 	}
 
