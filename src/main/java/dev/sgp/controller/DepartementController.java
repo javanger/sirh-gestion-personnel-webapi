@@ -17,6 +17,7 @@ import dev.sgp.repository.DepartementRepository;
 @RestController
 @RequestMapping("/api/departements")
 public class DepartementController {
+	
 	@Autowired
 	private DepartementRepository departementRepository;
 

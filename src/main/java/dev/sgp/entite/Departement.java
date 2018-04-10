@@ -21,7 +21,7 @@ public class Departement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private int id;
+	private Integer id;
 	
 	/** nom : String */
 	@Column(name = "NOM", length = 30)
@@ -30,14 +30,16 @@ public class Departement {
 	public Departement() {
 		// Constructeur vide
 	}
-	
-	public Departement(String unNom) {
-		this.nom = unNom;
+
+	public Departement(String nom) {
+		this.nom = nom;
 	}
 	
-	@Override
-	public String toString() {
-		return nom;
+	/** Getter
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
 	}
 
 	/** Getter
@@ -45,6 +47,13 @@ public class Departement {
 	 */
 	public String getNom() {
 		return nom;
+	}
+
+	/** Setter
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/** Setter

@@ -25,7 +25,7 @@ public class Collaborateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	private int id;
+	private Integer id;
 	
 	/** matricule : String */
 	@Column(name = "MATRICULE", length = 20)
@@ -73,137 +73,117 @@ public class Collaborateur {
 
 	}
 
-	/**
-	 * Getter
-	 * 
+	/** Getter
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/** Getter
 	 * @return the matricule
 	 */
 	public String getMatricule() {
 		return matricule;
 	}
 
-	/**
-	 * Getter
-	 * 
+	/** Getter
 	 * @return the nom
 	 */
 	public String getNom() {
 		return nom;
 	}
 
-	/**
-	 * Getter
-	 * 
+	/** Getter
 	 * @return the prenom
 	 */
 	public String getPrenom() {
 		return prenom;
 	}
 
-	/**
-	 * Getter
-	 * 
+	/** Getter
 	 * @return the dateDeNaissance
 	 */
 	public LocalDate getDateDeNaissance() {
 		return dateDeNaissance;
 	}
 
-	/**
-	 * Getter
-	 * 
+	/** Getter
 	 * @return the adresse
 	 */
 	public String getAdresse() {
 		return adresse;
 	}
 
-	/**
-	 * Getter
-	 * 
+	/** Getter
 	 * @return the departement
 	 */
 	public Departement getDepartement() {
 		return departement;
 	}
 
-	/**
-	 * Getter
-	 * 
-	 * @return the dateheureCreation
+	/** Getter
+	 * @return the dateHeureCreation
 	 */
 	public LocalDateTime getDateHeureCreation() {
 		return dateHeureCreation;
 	}
 
-	/**
-	 * Setter
-	 * 
-	 * @param matricule
-	 *            the matricule to set
+	/** Setter
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/** Setter
+	 * @param matricule the matricule to set
 	 */
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
 	}
 
-	/**
-	 * Setter
-	 * 
-	 * @param nom
-	 *            the nom to set
+	/** Setter
+	 * @param nom the nom to set
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-	/**
-	 * Setter
-	 * 
-	 * @param dateDeNaissance
-	 *            the dateDeNaissance to set
-	 */
-	public void setDateDeNaissance(LocalDate dateDeNaissance) {
-		this.dateDeNaissance = dateDeNaissance;
-	}
-
-	/**
-	 * Setter
-	 * 
-	 * @param adresse
-	 *            the adresse to set
-	 */
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
-	/**
-	 * Setter
-	 * 
-	 * @param dateheureCreation
-	 *            the dateheureCreation to set
-	 */
-	public void setDateHeureCreation(LocalDateTime dateheureCreation) {
-		this.dateHeureCreation = dateheureCreation;
-	}
-
-	/**
-	 * Setter
-	 * 
-	 * @param prenom
-	 *            the prenom to set
+	/** Setter
+	 * @param prenom the prenom to set
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
 
-	/**
-	 * Setter
-	 * 
-	 * @param departement
-	 *            the departement to set
+	/** Setter
+	 * @param dateDeNaissance the dateDeNaissance to set
+	 */
+	public void setDateDeNaissance(LocalDate dateDeNaissance) {
+		this.dateDeNaissance = dateDeNaissance;
+	}
+
+	/** Setter
+	 * @param adresse the adresse to set
+	 */
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	/** Setter
+	 * @param departement the departement to set
 	 */
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
+
+	/** Setter
+	 * @param dateHeureCreation the dateHeureCreation to set
+	 */
+	public void setDateHeureCreation(LocalDateTime dateHeureCreation) {
+		this.dateHeureCreation = dateHeureCreation;
+	}
+
 
 }
