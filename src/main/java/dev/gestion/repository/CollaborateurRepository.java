@@ -21,4 +21,7 @@ public interface CollaborateurRepository extends JpaRepository<Collaborateur, In
 	@Query("select c from Collaborateur c join c.departement dp where dp.id = ?1")
 
 	List<Collaborateur> findByDepartement(Integer id);
+
+	Boolean existsByMatricule(String matricule);
+
 }

@@ -8,12 +8,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.gestion.entite.Collaborateur;
+import dev.gestion.repository.BanqueRepository;
 import dev.gestion.repository.CollaborateurRepository;
+import dev.gestion.repository.DepartementRepository;
 
 /**
  * @author Axel B.
@@ -26,6 +30,12 @@ public class CollaborateurController {
 	@Autowired
 	private CollaborateurRepository collaborateurR;
 
+	@Autowired
+	private DepartementRepository departementR;
+
+	@Autowired
+	private BanqueRepository banqueR;
+
 	@GetMapping
 	public List<Collaborateur> listerCollaborateur1() {
 		return this.collaborateurR.findAll();
@@ -37,9 +47,19 @@ public class CollaborateurController {
 		return collaborateurR.findByDepartement(id);
 	}
 
-	@RequestMapping(value = "/{matricule}")
+	@RequestMapping(value = "/{matricule}", method = RequestMethod.GET)
 	public Collaborateur find(@PathVariable String matricule) {
 		return collaborateurR.findByMatricule(matricule);
+	}
+
+	@RequestMapping(value = "/{matricule}", method = RequestMethod.PUT)
+	public void ModifierCollaborateur(@PathVariable String matricule, @RequestBody Collaborateur collab) {
+		if (collaborateurR.existsByMatricule(matricule)) {
+			if (banqueR.existsById(collab.getBanque().getId())
+					&& departementR.existsById(collab.getDepartement().getId()))
+				collaborateurR.save(collab);
+
+		}
 	}
 
 }
