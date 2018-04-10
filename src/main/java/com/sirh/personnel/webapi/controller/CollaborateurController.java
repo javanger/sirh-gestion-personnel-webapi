@@ -11,6 +11,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -40,11 +41,13 @@ public class CollaborateurController {
 	@Autowired
 	DepartementRepository dRepo;
 
+	@CrossOrigin(origins = "*")
 	@GetMapping
 	public List<Collaborateur> searchAll() {
 		return cRepo.findAll();
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(params = "departement")
 	public List<Collaborateur> searchById(@RequestParam Integer departement) {
 		Optional<Departement> departementOpt = dRepo.findById(departement);
@@ -54,12 +57,14 @@ public class CollaborateurController {
 		return new ArrayList<>();
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "/{matricule}")
 	public Collaborateur searchByMatricule(@PathVariable String matricule) {
 		Optional<Collaborateur> collaborateur = cRepo.findByMatricule(matricule);
 		return collaborateur.isPresent() ? collaborateur.get() : null;
 	}
 
+	@CrossOrigin(origins = "*")
 	@PutMapping(value = "/{matricule}")
 	public @ResponseBody Collaborateur updateByMatricule(@PathVariable String matricule,
 			@RequestBody Collaborateur collaborateur, HttpServletResponse response) throws IOException {
@@ -85,6 +90,7 @@ public class CollaborateurController {
 
 	// GET /api/collaborateurs/[MATRICULE]/banque : récupère les coordonnées
 	// bancaires d’un collaborateur
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "/{matricule}/banque")
 	public Banque sendBanqueByMatricule(@PathVariable String matricule) {
 		Optional<Collaborateur> collaborateur = cRepo.findByMatricule(matricule);
@@ -96,6 +102,7 @@ public class CollaborateurController {
 
 	// PUT /api/collaborateurs/[MATRICULE]/banque : modifie uniquement les
 	// coordonnées bancaires d’un collaborateur.
+	@CrossOrigin(origins = "*")
 	@PutMapping(value = "/{matricule}/banque")
 	public @ResponseBody Collaborateur updateBanqueByMatricule(@PathVariable String matricule,
 			@RequestBody Banque banque, HttpServletResponse response) throws IOException {
