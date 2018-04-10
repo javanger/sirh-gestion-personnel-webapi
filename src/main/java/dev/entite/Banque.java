@@ -20,7 +20,6 @@ public class Banque {
 	private String nom;
 
 	public Banque() {
-
 	}
 
 	/**
