@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<import resource="classpath:departements.xml" />
+	<import resource="classpath:banque.xml" />
+
+	<bean id="collaborateur1" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="T3000"></property>
+		<property name="nom" value="Terminator"></property>
+		<property name="prenom" value="Super"></property>
+		<property name="banque">
+				<ref bean="banque1" />
+		</property>
+		<property name="departement">
+				<ref bean="departement1" />
+		</property>
+	</bean>
+	
+	<bean id="collaborateur2" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="HALF9000"></property>
+		<property name="nom" value="IA"></property>
+		<property name="prenom" value="DEATH"></property>
+		<property name="banque">
+				<ref bean="banque1" />
+		</property>
+		<property name="departement">
+				<ref bean="departement2" />
+		</property>
+	</bean>
+	
+	<bean id="collaborateur3" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="3630"></property>
+		<property name="nom" value="LeGris"></property>
+		<property name="prenom" value="Gandalf"></property>
+		<property name="banque">
+				<ref bean="banque2" />
+		</property>
+		<property name="departement">
+				<ref bean="departement3" />
+		</property>
+	</bean>
+
+</beans>
