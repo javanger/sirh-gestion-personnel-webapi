@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +36,19 @@ public class CollaborateurController {
 	Collaborateur getCollaborateurByMatricule(@PathVariable("matricule") String matricule) {
 
 		return collarepo.findByMatricule(matricule);
-	};
+	}
+
+	@PutMapping(value = "/{matricule}")
+	public void updateCollaborateur(@PathVariable("matricule") String matricule,
+			@RequestBody Collaborateur collaborateur) {
+		Collaborateur mdCollaborateur = collarepo.findByMatricule(matricule);
+		mdCollaborateur.setAdresse(collaborateur.getAdresse());
+		mdCollaborateur.setNom(collaborateur.getNom());
+		mdCollaborateur.setPrenom(collaborateur.getPrenom());
+
+		collarepo.save(mdCollaborateur);
+
+	}
 
 
 
