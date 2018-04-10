@@ -72,4 +72,13 @@ public class CollaborateurController {
 		return banqueCollaborateur;
 	}
 
+	@RequestMapping(value = "/{matricule}/banque", method = RequestMethod.PUT)
+	public void updateBanqueCollaborateur(@PathVariable("matricule") String matricule, @RequestBody Banque banque) {
+		Collaborateur mdCollaborateur = collaborateurR.findByMatricule(matricule);
+		mdCollaborateur.setBanque(banque);
+
+		collaborateurR.save(mdCollaborateur);
+
+	}
+
 }
