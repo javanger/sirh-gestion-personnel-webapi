@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<import resource="classpath:departements.xml" />
+	<import resource="classpath:banques.xml" />
+
+	<bean id="collaborateur1" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="M100"></property>
+		<property name="banque">
+			<ref bean="banque1"/>
+		</property>
+		<property name="departement">
+			<ref bean="departement2"/>
+		</property>
+	</bean>
+	
+	<bean id="collaborateur2" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="M101"></property>
+		<property name="banque">
+			<ref bean="banque1"/>
+		</property>
+		<property name="departement">
+			<ref bean="departement2"/>
+		</property>
+	</bean>
+	
+		<bean id="collaborateur3" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="M102"></property>
+		<property name="banque">
+			<ref bean="banque1"/>
+		</property>
+		<property name="departement">
+			<ref bean="departement2"/>
+		</property>
+	</bean>
+	
+		<bean id="collaborateur4" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="M103"></property>
+		<property name="banque">
+			<ref bean="banque2"/>
+		</property>
+		<property name="departement">
+			<ref bean="departement1"/>
+		</property>
+	</bean>
+	
+		<bean id="collaborateur5" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="M104"></property>
+		<property name="banque">
+			<ref bean="banque2"/>
+		</property>
+		<property name="departement">
+			<ref bean="departement1"/>
+		</property>
+	</bean>
+	
+		<bean id="collaborateur6" class="dev.sgp.entite.Collaborateur">
+		<property name="matricule" value="M105"></property>
+		<property name="banque">
+			<ref bean="banque2"/>
+		</property>
+		<property name="departement">
+			<ref bean="departement1"/>
+		</property>
+	</bean>
+</beans>
