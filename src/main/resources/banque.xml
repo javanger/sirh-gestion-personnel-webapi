@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean id="banque1" class="dev.sgp.entite.Banque">
+		<property name="nom" value="CIC"></property>
+		<property name="bic" value="45415"></property>
+		<property name="iban" value="gre54gerg458re"></property>
+	</bean>
+	
+	<bean id="banque2" class="dev.sgp.entite.Banque">
+		<property name="nom" value="BNP"></property>
+		<property name="bic" value="21544487"></property>
+		<property name="iban" value="ngezgi164679945"></property>
+		
+	</bean>
+	
+	<bean id="banque3" class="dev.sgp.entite.Banque">
+		<property name="nom" value="Credit Agricole"></property>
+		<property name="bic" value="15416497914"></property>
+		<property name="iban" value="ojojzipvbrggrge64465"></property>
+	</bean>
+
+</beans>
