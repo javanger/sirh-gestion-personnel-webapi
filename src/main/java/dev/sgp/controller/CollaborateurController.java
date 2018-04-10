@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.sgp.entite.Banque;
 import dev.sgp.entite.Collaborateur;
 import dev.sgp.repository.CollaborateurRepository;
 import dev.sgp.repository.DepartementRepository;
@@ -62,6 +63,13 @@ public class CollaborateurController {
 			collaborateurModifie.setDepartement(collaborateur.getDepartement());
 			
 			collaborateurRepository.save(collaborateurModifie);
+
+	}
+	
+	@GetMapping("/{matricule}/banque")
+	public Banque getCollaborateurBanque(@PathVariable(value = "matricule") String matricule) {
+
+		return this.collaborateurRepository.findByMatricule(matricule).getBanque();
 
 	}
 

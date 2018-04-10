@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Random;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -51,6 +52,9 @@ public class Collaborateur {
 	@ManyToOne
 	@JoinColumn(name = "ID_DEPARTEMENT")
 	private Departement departement;
+	
+	@Embedded
+	private Banque banque;
 
 	/** dateheureCreation : ZonedDateTime */
 	@Column(name = "DATECREATION")
@@ -60,7 +64,7 @@ public class Collaborateur {
 		// Constructeur vide
 	}
 
-	public Collaborateur(String unNom, String unPrenom, String uneDateDeNaissance, String uneAdresse, Departement departement) {
+	public Collaborateur(String unNom, String unPrenom, String uneDateDeNaissance, String uneAdresse, Departement departement, Banque banque) {
 
 		Random rnd = new Random();
 		this.matricule = 100000 + rnd.nextInt(900000) + "";
@@ -70,7 +74,7 @@ public class Collaborateur {
 		this.adresse = uneAdresse;
 		this.dateHeureCreation = LocalDateTime.now();
 		this.departement = departement;
-
+		this.banque = banque;
 	}
 
 	/** Getter
@@ -120,6 +124,13 @@ public class Collaborateur {
 	 */
 	public Departement getDepartement() {
 		return departement;
+	}
+
+	/** Getter
+	 * @return the banque
+	 */
+	public Banque getBanque() {
+		return banque;
 	}
 
 	/** Getter
@@ -179,11 +190,16 @@ public class Collaborateur {
 	}
 
 	/** Setter
+	 * @param banque the banque to set
+	 */
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+
+	/** Setter
 	 * @param dateHeureCreation the dateHeureCreation to set
 	 */
 	public void setDateHeureCreation(LocalDateTime dateHeureCreation) {
 		this.dateHeureCreation = dateHeureCreation;
 	}
-
-
 }
