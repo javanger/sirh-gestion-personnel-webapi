@@ -10,4 +10,6 @@ public interface CollaborateurRepository extends JpaRepository<Collaborateur, In
 
 	List<Collaborateur> findByDepartementId(int id);
 
+	Collaborateur findByMatricule(String matricule);
+
 }
