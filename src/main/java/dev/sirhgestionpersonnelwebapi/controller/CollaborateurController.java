@@ -44,8 +44,8 @@ public class CollaborateurController {
 	@PutMapping("/{matricule}")
 	public void modifyMatricule(@PathVariable String matricule, @RequestBody Collaborateur collab) {
 
-		collaborateurRepo.findByMatricule(matricule);
-		collab.setMatricule(matricule);
+		// collaborateurRepo.findByMatricule(matricule);
+		// collab.setMatricule(matricule);
 
 
 		collaborateurRepo.save(collab);
