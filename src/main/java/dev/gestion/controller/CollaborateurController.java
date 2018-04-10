@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.gestion.entite.Banque;
 import dev.gestion.entite.Collaborateur;
 import dev.gestion.repository.BanqueRepository;
 import dev.gestion.repository.CollaborateurRepository;
@@ -60,6 +61,15 @@ public class CollaborateurController {
 				collaborateurR.save(collab);
 
 		}
+
+	}
+
+	@RequestMapping(value = "/{matricule}/banque", method = RequestMethod.GET)
+	public Banque BanqueCollab(@PathVariable String matricule) {
+		Collaborateur collab = collaborateurR.findByMatricule(matricule);
+
+		Banque banqueCollaborateur = collab.getBanque();
+		return banqueCollaborateur;
 	}
 
 }
